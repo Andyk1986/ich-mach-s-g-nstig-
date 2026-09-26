@@ -11,9 +11,9 @@
 :root{
   --blue:#1299ed;
   --navy:#07111f;
-  --text:#08101c;
-  --muted:#667085;
-  --line:#e6edf5;
+  --text:#07111f;
+  --muted:#64748b;
+  --line:#e7edf5;
 }
 
 *{
@@ -32,19 +32,14 @@ body{
 }
 
 a{
-  color:inherit;
   text-decoration:none;
-}
-
-button,input{
-  font:inherit;
+  color:inherit;
 }
 
 .wrap{
   width:min(1440px,92vw);
   margin:auto;
 }
-
 
 /* =========================
    HEADER
@@ -53,25 +48,24 @@ button,input{
 header{
   position:sticky;
   top:0;
-  z-index:50;
-  background:rgba(255,255,255,.95);
+  z-index:30;
+  background:rgba(255,255,255,.96);
   backdrop-filter:blur(14px);
-  border-bottom:1px solid rgba(0,0,0,.05);
+  border-bottom:1px solid #edf1f5;
 }
 
 .nav{
-  min-height:92px;
+  height:92px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:24px;
+  gap:22px;
 }
 
 .brand{
   display:flex;
   align-items:center;
   gap:12px;
-  min-width:270px;
 }
 
 .mark{
@@ -106,16 +100,16 @@ header{
 }
 
 .brandtext{
-  line-height:.9;
   font-weight:950;
-  font-size:24px;
-  letter-spacing:-1.1px;
+  font-size:23px;
+  line-height:.9;
+  letter-spacing:-1px;
 }
 
 .brandtext b{
-  color:var(--blue);
   display:block;
-  font-size:30px;
+  color:var(--blue);
+  font-size:29px;
 }
 
 .brandtext small{
@@ -123,21 +117,19 @@ header{
   font-size:14px;
   margin-top:10px;
   letter-spacing:0;
-  font-weight:750;
   color:#111;
 }
 
 .links{
   display:flex;
-  align-items:center;
   gap:34px;
   font-weight:750;
 }
 
 .actions{
   display:flex;
-  align-items:center;
   gap:18px;
+  align-items:center;
   font-weight:700;
 }
 
@@ -145,109 +137,39 @@ header{
   font-size:23px;
 }
 
-
 /* =========================
    HERO
 ========================= */
 
 .hero{
-  min-height:690px;
-
-  background-image:
-    linear-gradient(
-      90deg,
-      rgba(255,255,255,.98) 0%,
-      rgba(255,255,255,.94) 37%,
-      rgba(255,255,255,.20) 62%,
-      rgba(255,255,255,.02) 100%
-    ),
-    url("hero-master.jpeg");
-
-  background-size:cover;
-  background-position:center center;
-
-  position:relative;
+  background:#fff;
   overflow:hidden;
 }
 
-.hero-inner{
-  min-height:690px;
-  display:flex;
-  align-items:center;
-  padding:44px 0 140px;
-}
-
-.copy{
-  width:52%;
-  max-width:730px;
-}
-
-.copy h1{
-  font-size:clamp(58px,6vw,104px);
-  line-height:.86;
-  letter-spacing:-5px;
-  margin:0;
-  font-weight:1000;
-  text-transform:uppercase;
-}
-
-.copy h1 span{
+.hero-art{
+  width:100%;
+  height:auto;
   display:block;
-  color:var(--blue);
+  object-fit:contain;
+  object-position:center top;
 }
-
-.script{
-  font-size:clamp(34px,3.6vw,62px);
-  font-weight:850;
-  transform:rotate(-2deg);
-  margin:18px 0 38px;
-  text-align:center;
-  letter-spacing:-2px;
-}
-
-.benefits{
-  display:flex;
-  gap:38px;
-  flex-wrap:wrap;
-  font-weight:800;
-  font-size:18px;
-}
-
-.benefit{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.bubble{
-  width:48px;
-  height:48px;
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  background:#e9f6ff;
-  color:var(--blue);
-  font-size:25px;
-}
-
 
 /* =========================
-   SEARCH BAR
+   SEARCH
 ========================= */
 
+.compare{
+  background:linear-gradient(#f8fbff,#eef6fd);
+  padding:22px 0;
+}
+
 .search-panel{
-  position:absolute;
-  left:50%;
-  bottom:26px;
-  transform:translateX(-50%);
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:25px;
+  padding:20px 26px;
 
-  width:min(1420px,92vw);
-
-  background:rgba(255,255,255,.97);
-  border-radius:26px;
-  padding:22px 28px;
-
-  box-shadow:0 18px 55px rgba(4,25,50,.17);
+  box-shadow:0 12px 32px rgba(20,55,90,.09);
 
   display:flex;
   align-items:center;
@@ -255,42 +177,40 @@ header{
 }
 
 .search-panel strong{
-  font-size:30px;
+  font-size:29px;
   white-space:nowrap;
 }
 
 .search{
   margin-left:auto;
   width:44%;
-
   background:#f2f6fb;
   border-radius:28px;
-
-  padding:15px 22px;
+  padding:15px 20px;
 
   display:flex;
   gap:12px;
   align-items:center;
 
-  color:#8492a6;
+  color:#8290a3;
 }
 
 .search input{
+  width:100%;
   border:0;
   outline:0;
   background:transparent;
-  width:100%;
+  font:inherit;
   font-size:17px;
 }
 
-
 /* =========================
-   CATEGORY CARDS
+   CARDS
 ========================= */
 
 .categories{
-  background:linear-gradient(#f8fbff,#eef6fd);
-  padding:26px 0 38px;
+  background:linear-gradient(#eef6fd,#f8fbff);
+  padding:0 0 34px;
 }
 
 .grid{
@@ -300,23 +220,17 @@ header{
 }
 
 .card{
+  position:relative;
   background:#fff;
   border:1px solid var(--line);
-  border-radius:24px;
+  border-radius:23px;
 
-  padding:20px;
-  min-height:180px;
+  padding:19px;
+  min-height:175px;
 
-  box-shadow:0 8px 25px rgba(17,52,86,.06);
+  box-shadow:0 7px 22px rgba(20,55,90,.06);
 
-  transition:.2s;
   cursor:pointer;
-  position:relative;
-}
-
-.card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 13px 30px rgba(17,52,86,.12);
 }
 
 .cicon{
@@ -327,36 +241,36 @@ header{
   display:grid;
   place-items:center;
 
-  font-size:27px;
-  margin-bottom:15px;
+  font-size:26px;
+  margin-bottom:14px;
 }
 
 .card h3{
-  margin:0 0 9px;
+  margin:0 0 8px;
   font-size:20px;
 }
 
 .card p{
   margin:0;
-  color:#263345;
+  color:#2d3a4c;
   line-height:1.35;
 }
 
 .arrow{
   position:absolute;
-  right:17px;
-  bottom:17px;
+  right:16px;
+  bottom:16px;
 
   width:36px;
   height:36px;
 
   border-radius:50%;
+  background:#dff2ff;
 
   display:grid;
   place-items:center;
 
-  background:#dff2ff;
-  font-size:22px;
+  font-size:21px;
 }
 
 .red{background:#ffe9e7;}
@@ -366,31 +280,30 @@ header{
 .green{background:#dcf8e8;}
 .orange{background:#ffedd8;}
 
-
 /* =========================
-   TRUST BAR
+   TRUST
 ========================= */
 
 .trust{
   background:var(--navy);
   color:#fff;
-  padding:28px 0;
+  padding:26px 0;
 }
 
 .trust-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:18px;
+  gap:15px;
 }
 
 .trust-item{
   display:flex;
+  gap:14px;
   align-items:center;
-  gap:16px;
 
-  padding:4px 20px;
+  padding:4px 18px;
 
-  border-right:1px solid #273345;
+  border-right:1px solid #283547;
 }
 
 .trust-item:last-child{
@@ -398,61 +311,27 @@ header{
 }
 
 .trust-icon{
-  font-size:32px;
-}
-
-.trust b{
-  display:block;
+  font-size:30px;
 }
 
 .trust small{
-  color:#bac5d2;
   display:block;
-  margin-top:6px;
+  color:#bac5d2;
+  margin-top:5px;
 }
-
 
 /* =========================
-   TEST MESSAGE
-========================= */
-
-.toast{
-  position:fixed;
-  left:50%;
-  bottom:24px;
-
-  transform:translateX(-50%) translateY(130px);
-
-  background:#07111f;
-  color:white;
-
-  padding:14px 20px;
-  border-radius:14px;
-
-  z-index:99;
-
-  transition:.25s;
-
-  box-shadow:0 10px 30px #0003;
-}
-
-.toast.show{
-  transform:translateX(-50%) translateY(0);
-}
-
-
-/* =========================
-   TABLET / IPHONE
+   IPHONE / MOBILE
 ========================= */
 
 @media(max-width:900px){
 
   .wrap{
-    width:min(calc(100% - 28px),720px);
+    width:calc(100% - 28px);
   }
 
   .nav{
-    min-height:74px;
+    height:76px;
   }
 
   .links{
@@ -463,16 +342,12 @@ header{
     display:none;
   }
 
-  .brand{
-    min-width:0;
-  }
-
   .brandtext{
-    font-size:18px;
+    font-size:17px;
   }
 
   .brandtext b{
-    font-size:22px;
+    font-size:21px;
   }
 
   .brandtext small{
@@ -481,99 +356,78 @@ header{
   }
 
   .mark{
-    transform:scale(.8);
+    width:46px;
+    transform:scale(.78);
     transform-origin:left center;
-    width:48px;
   }
 
-
-  /* iPhone Hero */
+  /*
+   WICHTIG:
+   Mastergrafik wird vollständig angezeigt.
+   Kein Zoom und kein Abschneiden.
+  */
 
   .hero{
-    min-height:735px;
-
-    background-image:
-      linear-gradient(
-        180deg,
-        rgba(255,255,255,.98) 0%,
-        rgba(255,255,255,.91) 30%,
-        rgba(255,255,255,.10) 54%,
-        rgba(255,255,255,.01) 100%
-      ),
-      url("hero-master.jpeg");
-
-    background-size:auto 100%;
-    background-position:63% center;
+    padding:0;
+    background:#fff;
+    overflow:hidden;
   }
 
-  .hero-inner{
-    min-height:735px;
-    align-items:flex-start;
-    padding-top:38px;
-  }
-
-  .copy{
+  .hero-art{
+    display:block;
     width:100%;
-    max-width:none;
+    max-width:100%;
+    height:auto;
+    object-fit:contain;
+    object-position:center top;
   }
 
-  .copy h1{
-    font-size:clamp(48px,15vw,72px);
-    line-height:.87;
-    letter-spacing:-3px;
-    max-width:520px;
-  }
+  /*
+   Suchfeld liegt jetzt UNTER dem Bild
+   und nicht mehr über den Kategorien.
+  */
 
-  .script{
-    text-align:left;
-    font-size:32px;
-    margin:14px 0 18px;
-    width:75%;
-  }
-
-  .benefits{
-    display:none;
+  .compare{
+    padding:14px 0 16px;
   }
 
   .search-panel{
-    bottom:18px;
-    width:calc(100% - 28px);
-
-    padding:17px;
-    border-radius:22px;
-
     display:block;
+    padding:17px;
+    border-radius:21px;
   }
 
   .search-panel strong{
-    font-size:21px;
     display:block;
-    margin-bottom:12px;
+    font-size:21px;
     white-space:normal;
+    line-height:1.15;
+    margin-bottom:12px;
   }
 
   .search{
     width:100%;
-    padding:13px 16px;
-  }
-
-  .categories{
-    padding-top:18px;
+    margin:0;
+    padding:13px 15px;
   }
 
   .grid{
     grid-template-columns:repeat(2,1fr);
-    gap:12px;
+    gap:11px;
   }
 
   .card{
-    min-height:160px;
-    padding:17px;
+    min-height:156px;
+    padding:16px;
     border-radius:20px;
   }
 
   .card h3{
     font-size:18px;
+  }
+
+  .card p{
+    font-size:14px;
   }
 
   .trust-grid{
@@ -582,45 +436,24 @@ header{
 
   .trust-item{
     border-right:0;
-    border-bottom:1px solid #273345;
-    padding:12px 4px;
+    border-bottom:1px solid #283547;
+    padding:10px 3px;
   }
 }
 
-
-/* =========================
-   SMALL IPHONE
-========================= */
-
 @media(max-width:430px){
 
-  .hero{
-    min-height:700px;
-    background-position:61% center;
+  .nav{
+    height:72px;
   }
 
-  .hero-inner{
-    min-height:700px;
-  }
-
-  .copy h1{
-    font-size:50px;
-  }
-
-  .script{
-    font-size:27px;
+  .hero-art{
+    width:100%;
+    height:auto;
   }
 
   .grid{
     grid-template-columns:1fr 1fr;
-  }
-
-  .card{
-    min-height:154px;
-  }
-
-  .card p{
-    font-size:14px;
   }
 
   .trust-grid{
@@ -628,14 +461,38 @@ header{
   }
 }
 
+/* =========================
+   TEST MESSAGE
+========================= */
+
+.toast{
+  position:fixed;
+  z-index:99;
+
+  left:50%;
+  bottom:22px;
+
+  transform:translate(-50%,120px);
+
+  background:#07111f;
+  color:#fff;
+
+  padding:13px 18px;
+  border-radius:14px;
+
+  transition:.25s;
+
+  box-shadow:0 10px 30px #0003;
+}
+
+.toast.show{
+  transform:translate(-50%,0);
+}
+
 </style>
 </head>
 
-
 <body>
-
-
-<!-- HEADER -->
 
 <header>
 
@@ -652,7 +509,6 @@ ICH MACH’S
 </div>
 
 </a>
-
 
 <nav class="links">
 
@@ -674,18 +530,23 @@ Ratgeber
 
 </nav>
 
-
 <div class="actions">
 
-<span class="icon">⌕</span>
+<span class="icon">
+⌕
+</span>
 
-<span class="icon">♡</span>
+<span class="icon">
+♡
+</span>
 
-<span>0</span>
+<span class="icon">
+♙
+</span>
 
-<span class="icon">♙</span>
-
-<span>Mein Konto</span>
+<span>
+Mein Konto
+</span>
 
 </div>
 
@@ -694,59 +555,30 @@ Ratgeber
 </header>
 
 
+<main>
 
-<!-- HERO -->
+
+<!-- MASTER DESIGN -->
+
+<section class="hero">
+
+<img
+class="hero-art"
+src="hero-master.jpeg"
+alt="ICH MACH’S GÜNSTIG – So lässt sich’s leben."
+>
+
+</section>
+
+
+<!-- VERGLEICH -->
 
 <section
-class="hero"
+class="compare"
 id="vergleich"
 >
 
-<div class="wrap hero-inner">
-
-<div class="copy">
-
-<h1>
-ICH MACH’S
-<span>GÜNSTIG.</span>
-</h1>
-
-<div class="script">
-So lässt sich’s leben.
-</div>
-
-
-<div class="benefits">
-
-<div class="benefit">
-<div class="bubble">€</div>
-Preise<br>
-vergleichen
-</div>
-
-
-<div class="benefit">
-<div class="bubble">⚡</div>
-Einfach<br>
-wechseln
-</div>
-
-
-<div class="benefit">
-<div class="bubble">♡</div>
-Mehr im<br>
-Leben haben
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-
-<!-- SEARCH -->
+<div class="wrap">
 
 <div class="search-panel">
 
@@ -767,11 +599,12 @@ placeholder="z. B. Strom, Handy, Mietwagen …"
 
 </div>
 
+</div>
+
 </section>
 
 
-
-<!-- CATEGORIES -->
+<!-- KATEGORIEN -->
 
 <section
 class="categories"
@@ -805,7 +638,6 @@ Spritpreise vergleichen
 </article>
 
 
-
 <article
 class="card"
 data-name="Strom & Gas"
@@ -828,7 +660,6 @@ Energietarife wechseln
 </div>
 
 </article>
-
 
 
 <article
@@ -855,7 +686,6 @@ Handyverträge im Vergleich
 </article>
 
 
-
 <article
 class="card"
 data-name="Internet"
@@ -880,7 +710,6 @@ DSL, Glasfaser & 5G Tarife
 </article>
 
 
-
 <article
 class="card"
 data-name="Mietwagen"
@@ -903,7 +732,6 @@ Günstige Mietwagen finden
 </div>
 
 </article>
-
 
 
 <article
@@ -935,8 +763,7 @@ Besser abgesichert für weniger
 </section>
 
 
-
-<!-- TRUST -->
+<!-- VERTRAUEN -->
 
 <section
 class="trust"
@@ -967,7 +794,6 @@ Tarife vergleichen
 </div>
 
 
-
 <div class="trust-item">
 
 <div class="trust-icon">
@@ -989,7 +815,6 @@ Seriöse Anbieter
 </div>
 
 
-
 <div class="trust-item">
 
 <div class="trust-icon">
@@ -1009,7 +834,6 @@ In wenigen Klicks vergleichen
 </div>
 
 </div>
-
 
 
 <div class="trust-item">
@@ -1038,6 +862,8 @@ So lässt sich’s leben.
 </section>
 
 
+</main>
+
 
 <div
 class="toast"
@@ -1045,69 +871,64 @@ id="toast"
 ></div>
 
 
-
 <script>
 
 const toast =
 document.getElementById("toast");
 
-
 function say(text){
 
-toast.textContent = text;
+  toast.textContent = text;
 
-toast.classList.add("show");
+  toast.classList.add("show");
 
-setTimeout(
-() => toast.classList.remove("show"),
-2200
-);
+  setTimeout(
+    () => toast.classList.remove("show"),
+    2000
+  );
 
 }
-
 
 document
 .querySelectorAll(".card")
 .forEach(card => {
 
-card.addEventListener(
-"click",
-() => {
+  card.addEventListener(
+    "click",
+    () => {
 
-say(
-card.dataset.name +
-" – Testbereich geöffnet"
-);
+      say(
+        card.dataset.name +
+        " – Testbereich geöffnet"
+      );
 
-}
-);
+    }
+  );
 
 });
-
 
 document
 .getElementById("search")
 .addEventListener(
-"keydown",
-event => {
+  "keydown",
+  event => {
 
-if(
-event.key === "Enter" &&
-event.target.value.trim()
-){
+    if(
+      event.key === "Enter" &&
+      event.target.value.trim()
+    ){
 
-say(
-"Suche nach: " +
-event.target.value.trim()
-);
+      say(
+        "Suche nach: " +
+        event.target.value.trim()
+      );
 
-}
+    }
 
-}
+  }
 );
 
 </script>
-
 
 </body>
 </html>
