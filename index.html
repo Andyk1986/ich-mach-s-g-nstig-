@@ -1,1453 +1,1113 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#081d18">
-
-  <title>ICH MACH’S GÜNSTIG – So lässt sich’s leben.</title>
-
-  <style>
-    :root{
-      --green:#0c7a54;
-      --green-dark:#07563d;
-      --green-soft:#e9f7f1;
-      --lime:#b9df45;
-      --yellow:#ffd75e;
-      --cream:#fffaf0;
-      --white:#ffffff;
-      --text:#17332a;
-      --muted:#687a74;
-      --border:#dfe9e5;
-      --shadow:0 16px 40px rgba(10,62,45,.12);
-    }
-
-    *{
-      box-sizing:border-box;
-      -webkit-tap-highlight-color:transparent;
-    }
-
-    html{
-      scroll-behavior:smooth;
-    }
-
-    body{
-      margin:0;
-      font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Helvetica,
-        Arial,
-        sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(circle at 15% 0%, #effff7 0, transparent 28%),
-        linear-gradient(180deg,#fffdf7 0%,#f5fbf8 100%);
-      min-height:100vh;
-    }
-
-    button,
-    input,
-    select{
-      font:inherit;
-    }
-
-    button{
-      cursor:pointer;
-    }
-
-    .page{
-      width:min(1180px,calc(100% - 28px));
-      margin:auto;
-    }
-
-    /* HEADER */
-
-    header{
-      padding:18px 0 8px;
-    }
-
-    .nav{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:20px;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-    }
-
-    .logo{
-      width:54px;
-      height:54px;
-      border-radius:18px;
-      background:linear-gradient(145deg,var(--green),#13a36f);
-      color:white;
-      display:grid;
-      place-items:center;
-      font-size:28px;
-      box-shadow:0 10px 25px rgba(12,122,84,.25);
-    }
-
-    .brand-name{
-      font-size:20px;
-      line-height:1;
-      font-weight:900;
-      letter-spacing:-.6px;
-    }
-
-    .brand-name span{
-      color:var(--green);
-    }
-
-    .brand-sub{
-      font-size:12px;
-      color:var(--muted);
-      margin-top:5px;
-      font-weight:700;
-    }
-
-    .nav-btn{
-      border:1px solid var(--border);
-      background:white;
-      padding:11px 16px;
-      border-radius:999px;
-      font-weight:800;
-      color:var(--green-dark);
-    }
-
-    /* HERO */
-
-    .hero{
-      margin-top:22px;
-      background:
-        linear-gradient(135deg,#0a6246 0%,#0b8158 55%,#14a06c 100%);
-      color:white;
-      border-radius:34px;
-      overflow:hidden;
-      position:relative;
-      box-shadow:var(--shadow);
-    }
-
-    .hero:before{
-      content:"";
-      position:absolute;
-      width:330px;
-      height:330px;
-      border-radius:50%;
-      right:-100px;
-      top:-120px;
-      background:rgba(255,255,255,.08);
-    }
-
-    .hero:after{
-      content:"€";
-      position:absolute;
-      right:55px;
-      bottom:-45px;
-      font-size:260px;
-      font-weight:900;
-      color:rgba(255,255,255,.055);
-      transform:rotate(-8deg);
-    }
-
-    .hero-inner{
-      min-height:420px;
-      display:grid;
-      grid-template-columns:1.25fr .75fr;
-      align-items:center;
-      padding:56px;
-      position:relative;
-      z-index:2;
-    }
-
-    .eyebrow{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 13px;
-      border-radius:999px;
-      background:rgba(255,255,255,.13);
-      border:1px solid rgba(255,255,255,.17);
-      font-weight:800;
-      font-size:13px;
-    }
-
-    h1{
-      margin:18px 0 14px;
-      font-size:clamp(43px,6vw,78px);
-      line-height:.94;
-      letter-spacing:-3px;
-      max-width:700px;
-    }
-
-    h1 .yellow{
-      color:var(--yellow);
-    }
-
-    .hero-text{
-      max-width:620px;
-      font-size:18px;
-      line-height:1.6;
-      color:#e8fff6;
-    }
-
-    .hero-buttons{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-top:28px;
-    }
-
-    .primary{
-      border:0;
-      background:var(--yellow);
-      color:#17332a;
-      font-weight:900;
-      padding:16px 22px;
-      border-radius:16px;
-      box-shadow:0 10px 25px rgba(0,0,0,.12);
-    }
-
-    .secondary{
-      border:1px solid rgba(255,255,255,.3);
-      background:rgba(255,255,255,.1);
-      color:white;
-      font-weight:800;
-      padding:16px 22px;
-      border-radius:16px;
-    }
-
-    /* MASCOT */
-
-    .mascot-wrap{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-    }
-
-    .mascot{
-      width:245px;
-      height:245px;
-      border-radius:50%;
-      background:var(--yellow);
-      display:grid;
-      place-items:center;
-      position:relative;
-      box-shadow:
-        0 25px 50px rgba(0,0,0,.2),
-        inset 0 -12px 0 rgba(0,0,0,.06);
-      transform:rotate(3deg);
-    }
-
-    .face{
-      font-size:110px;
-      transform:rotate(-3deg);
-    }
-
-    .coin{
-      position:absolute;
-      right:-8px;
-      top:25px;
-      width:70px;
-      height:70px;
-      background:white;
-      color:var(--green);
-      border-radius:50%;
-      display:grid;
-      place-items:center;
-      font-weight:1000;
-      font-size:36px;
-      box-shadow:0 12px 25px rgba(0,0,0,.15);
-    }
-
-    /* TRUST */
-
-    .trust{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:14px;
-      margin:18px 0 0;
-    }
-
-    .trust-card{
-      background:white;
-      border:1px solid var(--border);
-      border-radius:18px;
-      padding:16px;
-      display:flex;
-      align-items:center;
-      gap:12px;
-    }
-
-    .trust-icon{
-      width:42px;
-      height:42px;
-      border-radius:14px;
-      display:grid;
-      place-items:center;
-      background:var(--green-soft);
-      font-size:20px;
-    }
-
-    .trust-card strong{
-      display:block;
-      font-size:14px;
-    }
-
-    .trust-card small{
-      color:var(--muted);
-    }
-
-    /* CATEGORY SECTION */
-
-    .section{
-      padding:65px 0 20px;
-    }
-
-    .section-head{
-      text-align:center;
-      max-width:680px;
-      margin:0 auto 32px;
-    }
-
-    .section-head h2{
-      font-size:clamp(31px,5vw,46px);
-      letter-spacing:-1.7px;
-      margin:0 0 10px;
-    }
-
-    .section-head p{
-      color:var(--muted);
-      font-size:17px;
-      line-height:1.6;
-    }
-
-    .categories{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:16px;
-    }
-
-    .category{
-      appearance:none;
-      border:1px solid var(--border);
-      background:white;
-      min-height:195px;
-      border-radius:25px;
-      padding:23px;
-      text-align:left;
-      color:var(--text);
-      box-shadow:0 8px 22px rgba(17,70,53,.06);
-      transition:.18s ease;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .category:hover{
-      transform:translateY(-5px);
-      border-color:#9ed8c3;
-      box-shadow:0 18px 35px rgba(17,70,53,.12);
-    }
-
-    .category:active{
-      transform:scale(.98);
-    }
-
-    .cat-icon{
-      width:60px;
-      height:60px;
-      border-radius:19px;
-      display:grid;
-      place-items:center;
-      background:var(--green-soft);
-      font-size:30px;
-      margin-bottom:22px;
-    }
-
-    .category strong{
-      display:block;
-      font-size:19px;
-      margin-bottom:7px;
-    }
-
-    .category span{
-      font-size:14px;
-      color:var(--muted);
-      line-height:1.45;
-    }
-
-    .arrow{
-      position:absolute;
-      right:19px;
-      bottom:18px;
-      width:32px;
-      height:32px;
-      border-radius:50%;
-      background:#f3f8f6;
-      display:grid;
-      place-items:center;
-      color:var(--green);
-      font-weight:900;
-    }
-
-    /* COMPARISON */
-
-    .compare-box{
-      margin:55px 0;
-      background:white;
-      border:1px solid var(--border);
-      border-radius:30px;
-      box-shadow:var(--shadow);
-      overflow:hidden;
-      display:none;
-    }
-
-    .compare-top{
-      background:linear-gradient(135deg,#effbf6,#fffaf0);
-      padding:27px 30px;
-      display:flex;
-      justify-content:space-between;
-      gap:20px;
-      align-items:center;
-      border-bottom:1px solid var(--border);
-    }
-
-    .compare-title{
-      display:flex;
-      gap:15px;
-      align-items:center;
-    }
-
-    .compare-title-icon{
-      width:58px;
-      height:58px;
-      border-radius:18px;
-      display:grid;
-      place-items:center;
-      background:var(--green);
-      color:white;
-      font-size:27px;
-    }
-
-    .compare-title h3{
-      margin:0 0 4px;
-      font-size:24px;
-    }
-
-    .compare-title p{
-      margin:0;
-      color:var(--muted);
-    }
-
-    .close{
-      width:42px;
-      height:42px;
-      border:0;
-      border-radius:50%;
-      background:white;
-      font-size:20px;
-      color:var(--text);
-      box-shadow:0 5px 15px rgba(0,0,0,.08);
-    }
-
-    .form{
-      padding:30px;
-    }
-
-    .form-grid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:18px;
-    }
-
-    label{
-      display:block;
-      font-size:13px;
-      font-weight:900;
-      margin-bottom:8px;
-    }
-
-    input,
-    select{
-      width:100%;
-      height:54px;
-      border:1px solid #d7e3de;
-      border-radius:14px;
-      background:#fbfdfc;
-      padding:0 15px;
-      outline:none;
-      color:var(--text);
-    }
-
-    input:focus,
-    select:focus{
-      border-color:var(--green);
-      box-shadow:0 0 0 4px rgba(12,122,84,.09);
-    }
-
-    .full{
-      grid-column:1/-1;
-    }
-
-    .test-notice{
-      background:#fff8dc;
-      border:1px solid #f3df8b;
-      padding:15px;
-      border-radius:14px;
-      color:#67581f;
-      font-size:13px;
-      line-height:1.5;
-    }
-
-    .compare-button{
-      width:100%;
-      border:0;
-      border-radius:16px;
-      background:linear-gradient(135deg,var(--green-dark),var(--green));
-      color:white;
-      font-weight:900;
-      padding:17px;
-      margin-top:8px;
-      font-size:16px;
-    }
-
-    /* RESULT */
-
-    .result{
-      display:none;
-      margin-top:22px;
-      background:#f2fbf7;
-      border:1px solid #cde9dd;
-      border-radius:20px;
-      padding:22px;
-    }
-
-    .result-badge{
-      display:inline-block;
-      background:var(--green);
-      color:white;
-      border-radius:999px;
-      padding:6px 10px;
-      font-size:11px;
-      font-weight:900;
-      margin-bottom:10px;
-    }
-
-    .result h4{
-      margin:0 0 8px;
-      font-size:21px;
-    }
-
-    .result p{
-      color:var(--muted);
-      line-height:1.55;
-      margin-bottom:17px;
-    }
-
-    /* HOW */
-
-    .how{
-      padding:30px 0 70px;
-    }
-
-    .steps{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:18px;
-    }
-
-    .step{
-      text-align:center;
-      background:white;
-      border:1px solid var(--border);
-      border-radius:25px;
-      padding:28px 20px;
-    }
-
-    .number{
-      margin:0 auto 17px;
-      width:48px;
-      height:48px;
-      border-radius:50%;
-      display:grid;
-      place-items:center;
-      background:var(--green);
-      color:white;
-      font-weight:900;
-      font-size:19px;
-    }
-
-    .step h3{
-      margin:0 0 8px;
-    }
-
-    .step p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.5;
-      font-size:14px;
-    }
-
-    footer{
-      border-top:1px solid var(--border);
-      padding:28px 0 45px;
-      color:var(--muted);
-      font-size:13px;
-    }
-
-    .footer-inner{
-      display:flex;
-      justify-content:space-between;
-      gap:20px;
-      flex-wrap:wrap;
-    }
-
-    /* MOBILE */
-
-    @media(max-width:900px){
-
-      .hero-inner{
-        grid-template-columns:1fr;
-        padding:40px 28px;
-      }
-
-      .mascot-wrap{
-        margin-top:40px;
-      }
-
-      .categories{
-        grid-template-columns:repeat(2,1fr);
-      }
-
-      .hero{
-        border-radius:27px;
-      }
-
-      .trust{
-        grid-template-columns:1fr;
-      }
-
-    }
-
-    @media(max-width:600px){
-
-      .page{
-        width:min(100% - 20px,1180px);
-      }
-
-      header{
-        padding-top:12px;
-      }
-
-      .logo{
-        width:48px;
-        height:48px;
-      }
-
-      .brand-name{
-        font-size:16px;
-      }
-
-      .brand-sub{
-        font-size:10px;
-      }
-
-      .nav-btn{
-        padding:9px 12px;
-        font-size:12px;
-      }
-
-      .hero{
-        margin-top:12px;
-      }
-
-      .hero-inner{
-        padding:33px 22px;
-      }
-
-      h1{
-        font-size:45px;
-        letter-spacing:-2.3px;
-      }
-
-      .hero-text{
-        font-size:16px;
-      }
-
-      .hero-buttons{
-        display:grid;
-      }
-
-      .hero-buttons button{
-        width:100%;
-      }
-
-      .mascot{
-        width:185px;
-        height:185px;
-      }
-
-      .face{
-        font-size:82px;
-      }
-
-      .coin{
-        width:57px;
-        height:57px;
-        font-size:28px;
-      }
-
-      .section{
-        padding-top:50px;
-      }
-
-      .categories{
-        grid-template-columns:1fr 1fr;
-        gap:10px;
-      }
-
-      .category{
-        min-height:168px;
-        padding:17px;
-        border-radius:20px;
-      }
-
-      .cat-icon{
-        width:50px;
-        height:50px;
-        font-size:25px;
-        margin-bottom:17px;
-      }
-
-      .category strong{
-        font-size:16px;
-      }
-
-      .category span{
-        font-size:12px;
-      }
-
-      .form-grid{
-        grid-template-columns:1fr;
-      }
-
-      .full{
-        grid-column:auto;
-      }
-
-      .compare-top{
-        padding:20px;
-      }
-
-      .form{
-        padding:20px;
-      }
-
-      .steps{
-        grid-template-columns:1fr;
-      }
-
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+
+<title>ICH MACH’S GÜNSTIG – So lässt sich’s leben.</title>
+
+<style>
+:root{
+  --blue:#1299ed;
+  --navy:#07111f;
+  --text:#08101c;
+  --muted:#667085;
+  --line:#e6edf5;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  color:var(--text);
+  background:#fff;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button,input{
+  font:inherit;
+}
+
+.wrap{
+  width:min(1440px,92vw);
+  margin:auto;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(0,0,0,.05);
+}
+
+.nav{
+  min-height:92px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-width:270px;
+}
+
+.mark{
+  width:58px;
+  height:44px;
+  position:relative;
+}
+
+.mark:before{
+  content:"";
+  position:absolute;
+  left:2px;
+  bottom:3px;
+  width:47px;
+  height:22px;
+  border:11px solid var(--navy);
+  border-top:0;
+  border-radius:0 0 40px 40px;
+  transform:rotate(10deg);
+}
+
+.mark:after{
+  content:"";
+  position:absolute;
+  right:3px;
+  top:0;
+  width:16px;
+  height:16px;
+  background:var(--blue);
+  border-radius:50%;
+  box-shadow:-20px 13px 0 2px var(--blue);
+}
+
+.brandtext{
+  line-height:.9;
+  font-weight:950;
+  font-size:24px;
+  letter-spacing:-1.1px;
+}
+
+.brandtext b{
+  color:var(--blue);
+  display:block;
+  font-size:30px;
+}
+
+.brandtext small{
+  display:block;
+  font-size:14px;
+  margin-top:10px;
+  letter-spacing:0;
+  font-weight:750;
+  color:#111;
+}
+
+.links{
+  display:flex;
+  align-items:center;
+  gap:34px;
+  font-weight:750;
+}
+
+.actions{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  font-weight:700;
+}
+
+.icon{
+  font-size:23px;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  min-height:690px;
+
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.98) 0%,
+      rgba(255,255,255,.94) 37%,
+      rgba(255,255,255,.20) 62%,
+      rgba(255,255,255,.02) 100%
+    ),
+    url("hero-master.jpeg");
+
+  background-size:cover;
+  background-position:center center;
+
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-inner{
+  min-height:690px;
+  display:flex;
+  align-items:center;
+  padding:44px 0 140px;
+}
+
+.copy{
+  width:52%;
+  max-width:730px;
+}
+
+.copy h1{
+  font-size:clamp(58px,6vw,104px);
+  line-height:.86;
+  letter-spacing:-5px;
+  margin:0;
+  font-weight:1000;
+  text-transform:uppercase;
+}
+
+.copy h1 span{
+  display:block;
+  color:var(--blue);
+}
+
+.script{
+  font-size:clamp(34px,3.6vw,62px);
+  font-weight:850;
+  transform:rotate(-2deg);
+  margin:18px 0 38px;
+  text-align:center;
+  letter-spacing:-2px;
+}
+
+.benefits{
+  display:flex;
+  gap:38px;
+  flex-wrap:wrap;
+  font-weight:800;
+  font-size:18px;
+}
+
+.benefit{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.bubble{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:#e9f6ff;
+  color:var(--blue);
+  font-size:25px;
+}
+
+
+/* =========================
+   SEARCH BAR
+========================= */
+
+.search-panel{
+  position:absolute;
+  left:50%;
+  bottom:26px;
+  transform:translateX(-50%);
+
+  width:min(1420px,92vw);
+
+  background:rgba(255,255,255,.97);
+  border-radius:26px;
+  padding:22px 28px;
+
+  box-shadow:0 18px 55px rgba(4,25,50,.17);
+
+  display:flex;
+  align-items:center;
+  gap:28px;
+}
+
+.search-panel strong{
+  font-size:30px;
+  white-space:nowrap;
+}
+
+.search{
+  margin-left:auto;
+  width:44%;
+
+  background:#f2f6fb;
+  border-radius:28px;
+
+  padding:15px 22px;
+
+  display:flex;
+  gap:12px;
+  align-items:center;
+
+  color:#8492a6;
+}
+
+.search input{
+  border:0;
+  outline:0;
+  background:transparent;
+  width:100%;
+  font-size:17px;
+}
+
+
+/* =========================
+   CATEGORY CARDS
+========================= */
+
+.categories{
+  background:linear-gradient(#f8fbff,#eef6fd);
+  padding:26px 0 38px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:14px;
+}
+
+.card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:24px;
+
+  padding:20px;
+  min-height:180px;
+
+  box-shadow:0 8px 25px rgba(17,52,86,.06);
+
+  transition:.2s;
+  cursor:pointer;
+  position:relative;
+}
+
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 13px 30px rgba(17,52,86,.12);
+}
+
+.cicon{
+  width:52px;
+  height:52px;
+  border-radius:50%;
+
+  display:grid;
+  place-items:center;
+
+  font-size:27px;
+  margin-bottom:15px;
+}
+
+.card h3{
+  margin:0 0 9px;
+  font-size:20px;
+}
+
+.card p{
+  margin:0;
+  color:#263345;
+  line-height:1.35;
+}
+
+.arrow{
+  position:absolute;
+  right:17px;
+  bottom:17px;
+
+  width:36px;
+  height:36px;
+
+  border-radius:50%;
+
+  display:grid;
+  place-items:center;
+
+  background:#dff2ff;
+  font-size:22px;
+}
+
+.red{background:#ffe9e7;}
+.yellow{background:#fff5c9;}
+.purple{background:#efe4ff;}
+.cyan{background:#def3ff;}
+.green{background:#dcf8e8;}
+.orange{background:#ffedd8;}
+
+
+/* =========================
+   TRUST BAR
+========================= */
+
+.trust{
+  background:var(--navy);
+  color:#fff;
+  padding:28px 0;
+}
+
+.trust-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.trust-item{
+  display:flex;
+  align-items:center;
+  gap:16px;
+
+  padding:4px 20px;
+
+  border-right:1px solid #273345;
+}
+
+.trust-item:last-child{
+  border:0;
+}
+
+.trust-icon{
+  font-size:32px;
+}
+
+.trust b{
+  display:block;
+}
+
+.trust small{
+  color:#bac5d2;
+  display:block;
+  margin-top:6px;
+}
+
+
+/* =========================
+   TEST MESSAGE
+========================= */
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:24px;
+
+  transform:translateX(-50%) translateY(130px);
+
+  background:#07111f;
+  color:white;
+
+  padding:14px 20px;
+  border-radius:14px;
+
+  z-index:99;
+
+  transition:.25s;
+
+  box-shadow:0 10px 30px #0003;
+}
+
+.toast.show{
+  transform:translateX(-50%) translateY(0);
+}
+
+
+/* =========================
+   TABLET / IPHONE
+========================= */
+
+@media(max-width:900px){
+
+  .wrap{
+    width:min(calc(100% - 28px),720px);
+  }
+
+  .nav{
+    min-height:74px;
+  }
+
+  .links{
+    display:none;
+  }
+
+  .actions span:not(.icon){
+    display:none;
+  }
+
+  .brand{
+    min-width:0;
+  }
+
+  .brandtext{
+    font-size:18px;
+  }
+
+  .brandtext b{
+    font-size:22px;
+  }
+
+  .brandtext small{
+    font-size:11px;
+    margin-top:7px;
+  }
+
+  .mark{
+    transform:scale(.8);
+    transform-origin:left center;
+    width:48px;
+  }
+
+
+  /* iPhone Hero */
+
+  .hero{
+    min-height:735px;
+
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(255,255,255,.98) 0%,
+        rgba(255,255,255,.91) 30%,
+        rgba(255,255,255,.10) 54%,
+        rgba(255,255,255,.01) 100%
+      ),
+      url("hero-master.jpeg");
+
+    background-size:auto 100%;
+    background-position:63% center;
+  }
+
+  .hero-inner{
+    min-height:735px;
+    align-items:flex-start;
+    padding-top:38px;
+  }
+
+  .copy{
+    width:100%;
+    max-width:none;
+  }
+
+  .copy h1{
+    font-size:clamp(48px,15vw,72px);
+    line-height:.87;
+    letter-spacing:-3px;
+    max-width:520px;
+  }
+
+  .script{
+    text-align:left;
+    font-size:32px;
+    margin:14px 0 18px;
+    width:75%;
+  }
+
+  .benefits{
+    display:none;
+  }
+
+  .search-panel{
+    bottom:18px;
+    width:calc(100% - 28px);
+
+    padding:17px;
+    border-radius:22px;
+
+    display:block;
+  }
+
+  .search-panel strong{
+    font-size:21px;
+    display:block;
+    margin-bottom:12px;
+    white-space:normal;
+  }
+
+  .search{
+    width:100%;
+    padding:13px 16px;
+  }
+
+  .categories{
+    padding-top:18px;
+  }
+
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+  }
+
+  .card{
+    min-height:160px;
+    padding:17px;
+    border-radius:20px;
+  }
+
+  .card h3{
+    font-size:18px;
+  }
+
+  .trust-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .trust-item{
+    border-right:0;
+    border-bottom:1px solid #273345;
+    padding:12px 4px;
+  }
+}
+
+
+/* =========================
+   SMALL IPHONE
+========================= */
+
+@media(max-width:430px){
+
+  .hero{
+    min-height:700px;
+    background-position:61% center;
+  }
+
+  .hero-inner{
+    min-height:700px;
+  }
+
+  .copy h1{
+    font-size:50px;
+  }
+
+  .script{
+    font-size:27px;
+  }
+
+  .grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .card{
+    min-height:154px;
+  }
+
+  .card p{
+    font-size:14px;
+  }
+
+  .trust-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+</style>
 </head>
+
 
 <body>
 
+
+<!-- HEADER -->
+
 <header>
-  <div class="page nav">
 
-    <div class="brand">
-      <div class="logo">💶</div>
+<div class="wrap nav">
 
-      <div>
-        <div class="brand-name">
-          ICH MACH’S <span>GÜNSTIG</span>
-        </div>
+<a class="brand" href="#">
 
-        <div class="brand-sub">
-          So lässt sich’s leben.
-        </div>
-      </div>
-    </div>
+<div class="mark"></div>
 
-    <button class="nav-btn" onclick="scrollCategories()">
-      Vergleichen
-    </button>
+<div class="brandtext">
+ICH MACH’S
+<b>GÜNSTIG</b>
+<small>So lässt sich’s leben.</small>
+</div>
 
-  </div>
+</a>
+
+
+<nav class="links">
+
+<a href="#vergleich">
+Tarife vergleichen
+</a>
+
+<a href="#kategorien">
+Kategorien⌄
+</a>
+
+<a href="#so">
+So funktioniert’s
+</a>
+
+<a href="#">
+Ratgeber
+</a>
+
+</nav>
+
+
+<div class="actions">
+
+<span class="icon">⌕</span>
+
+<span class="icon">♡</span>
+
+<span>0</span>
+
+<span class="icon">♙</span>
+
+<span>Mein Konto</span>
+
+</div>
+
+</div>
+
 </header>
 
 
-<main class="page">
 
-  <!-- HERO -->
+<!-- HERO -->
 
-  <section class="hero">
+<section
+class="hero"
+id="vergleich"
+>
 
-    <div class="hero-inner">
+<div class="wrap hero-inner">
 
-      <div>
+<div class="copy">
 
-        <div class="eyebrow">
-          ✓ Einfach vergleichen & sparen
-        </div>
+<h1>
+ICH MACH’S
+<span>GÜNSTIG.</span>
+</h1>
 
-        <h1>
-          Ich mach’s<br>
-          <span class="yellow">günstig.</span>
-        </h1>
+<div class="script">
+So lässt sich’s leben.
+</div>
 
-        <p class="hero-text">
-          Verträge und Tarife einfach vergleichen.
-          Schnell verstehen, was zu dir passt und
-          Sparmöglichkeiten entdecken.
-        </p>
 
-        <div class="hero-buttons">
+<div class="benefits">
 
-          <button class="primary" onclick="scrollCategories()">
-            Jetzt vergleichen →
-          </button>
+<div class="benefit">
+<div class="bubble">€</div>
+Preise<br>
+vergleichen
+</div>
 
-          <button class="secondary" onclick="scrollHow()">
-            So funktioniert’s
-          </button>
 
-        </div>
+<div class="benefit">
+<div class="bubble">⚡</div>
+Einfach<br>
+wechseln
+</div>
 
-      </div>
 
+<div class="benefit">
+<div class="bubble">♡</div>
+Mehr im<br>
+Leben haben
+</div>
 
-      <div class="mascot-wrap">
+</div>
 
-        <div class="mascot">
+</div>
 
-          <div class="face">😎</div>
+</div>
 
-          <div class="coin">€</div>
 
-        </div>
 
-      </div>
+<!-- SEARCH -->
 
-    </div>
+<div class="search-panel">
 
-  </section>
+<strong>
+Was willst du heute günstiger machen?
+</strong>
 
+<label class="search">
 
-  <!-- TRUST -->
+⌕
 
-  <section class="trust">
+<input
+id="search"
+placeholder="z. B. Strom, Handy, Mietwagen …"
+>
 
-    <div class="trust-card">
-      <div class="trust-icon">✓</div>
-      <div>
-        <strong>Einfach</strong>
-        <small>Schritt für Schritt vergleichen</small>
-      </div>
-    </div>
+</label>
 
-    <div class="trust-card">
-      <div class="trust-icon">⚡</div>
-      <div>
-        <strong>Schnell</strong>
-        <small>Wenige Angaben genügen</small>
-      </div>
-    </div>
+</div>
 
-    <div class="trust-card">
-      <div class="trust-icon">🔒</div>
-      <div>
-        <strong>Testmodus</strong>
-        <small>Noch keine Datenübertragung</small>
-      </div>
-    </div>
+</section>
 
-  </section>
 
 
-  <!-- CATEGORIES -->
+<!-- CATEGORIES -->
 
-  <section class="section" id="categories">
+<section
+class="categories"
+id="kategorien"
+>
 
-    <div class="section-head">
+<div class="wrap grid">
 
-      <h2>
-        Was möchtest du günstiger machen?
-      </h2>
 
-      <p>
-        Wähle einen Bereich aus und teste unseren
-        Vergleichsablauf.
-      </p>
+<article
+class="card"
+data-name="Tanken"
+>
 
-    </div>
+<div class="cicon red">
+⛽
+</div>
 
+<h3>
+Tanken
+</h3>
 
-    <div class="categories">
+<p>
+Spritpreise vergleichen
+</p>
 
-      <button class="category"
-        onclick="openCompare('Strom','⚡')">
+<div class="arrow">
+→
+</div>
 
-        <div class="cat-icon">⚡</div>
+</article>
 
-        <strong>Strom</strong>
 
-        <span>
-          Stromtarife vergleichen
-        </span>
 
-        <div class="arrow">→</div>
+<article
+class="card"
+data-name="Strom & Gas"
+>
 
-      </button>
+<div class="cicon yellow">
+⚡
+</div>
 
+<h3>
+Strom & Gas
+</h3>
 
-      <button class="category"
-        onclick="openCompare('Gas','🔥')">
+<p>
+Energietarife wechseln
+</p>
 
-        <div class="cat-icon">🔥</div>
+<div class="arrow">
+→
+</div>
 
-        <strong>Gas</strong>
+</article>
 
-        <span>
-          Gastarife entdecken
-        </span>
 
-        <div class="arrow">→</div>
 
-      </button>
+<article
+class="card"
+data-name="Mobilfunk"
+>
 
+<div class="cicon purple">
+📱
+</div>
 
-      <button class="category"
-        onclick="openCompare('Internet','🌐')">
+<h3>
+Mobilfunk
+</h3>
 
-        <div class="cat-icon">🌐</div>
+<p>
+Handyverträge im Vergleich
+</p>
 
-        <strong>Internet</strong>
+<div class="arrow">
+→
+</div>
 
-        <span>
-          Internet & DSL vergleichen
-        </span>
+</article>
 
-        <div class="arrow">→</div>
 
-      </button>
 
+<article
+class="card"
+data-name="Internet"
+>
 
-      <button class="category"
-        onclick="openCompare('Mobilfunk','📱')">
+<div class="cicon cyan">
+◉
+</div>
 
-        <div class="cat-icon">📱</div>
+<h3>
+Internet
+</h3>
 
-        <strong>Mobilfunk</strong>
+<p>
+DSL, Glasfaser & 5G Tarife
+</p>
 
-        <span>
-          Handytarife vergleichen
-        </span>
+<div class="arrow">
+→
+</div>
 
-        <div class="arrow">→</div>
+</article>
 
-      </button>
 
 
-      <button class="category"
-        onclick="openCompare('Versicherung','🛡️')">
+<article
+class="card"
+data-name="Mietwagen"
+>
 
-        <div class="cat-icon">🛡️</div>
+<div class="cicon green">
+🚗
+</div>
 
-        <strong>Versicherung</strong>
+<h3>
+Mietwagen
+</h3>
 
-        <span>
-          Versicherungen prüfen
-        </span>
+<p>
+Günstige Mietwagen finden
+</p>
 
-        <div class="arrow">→</div>
+<div class="arrow">
+→
+</div>
 
-      </button>
+</article>
 
 
-      <button class="category"
-        onclick="openCompare('Kredit','💳')">
 
-        <div class="cat-icon">💳</div>
+<article
+class="card"
+data-name="Versicherungen"
+>
 
-        <strong>Kredit</strong>
+<div class="cicon orange">
+◆
+</div>
 
-        <span>
-          Konditionen vergleichen
-        </span>
+<h3>
+Versicherungen
+</h3>
 
-        <div class="arrow">→</div>
+<p>
+Besser abgesichert für weniger
+</p>
 
-      </button>
+<div class="arrow">
+→
+</div>
 
+</article>
 
-      <button class="category"
-        onclick="openCompare('Reisen','✈️')">
 
-        <div class="cat-icon">✈️</div>
+</div>
 
-        <strong>Reisen</strong>
+</section>
 
-        <span>
-          Angebote entdecken
-        </span>
 
-        <div class="arrow">→</div>
 
-      </button>
+<!-- TRUST -->
 
+<section
+class="trust"
+id="so"
+>
 
-      <button class="category"
-        onclick="openCompare('Mehr','➕')">
+<div class="wrap trust-grid">
 
-        <div class="cat-icon">➕</div>
 
-        <strong>Mehr</strong>
+<div class="trust-item">
 
-        <span>
-          Weitere Vergleiche
-        </span>
+<div class="trust-icon">
+♢
+</div>
 
-        <div class="arrow">→</div>
+<div>
 
-      </button>
+<b>
+100 % kostenlos
+</b>
 
-    </div>
+<small>
+Tarife vergleichen
+</small>
 
-  </section>
+</div>
 
+</div>
 
-  <!-- COMPARISON -->
 
-  <section class="compare-box" id="compareBox">
 
-    <div class="compare-top">
+<div class="trust-item">
 
-      <div class="compare-title">
+<div class="trust-icon">
+✓
+</div>
 
-        <div
-          class="compare-title-icon"
-          id="selectedIcon">
-          ⚡
-        </div>
+<div>
 
-        <div>
+<b>
+Unabhängige Vergleiche
+</b>
 
-          <h3 id="selectedTitle">
-            Strom vergleichen
-          </h3>
+<small>
+Seriöse Anbieter
+</small>
 
-          <p>
-            Kostenloser Test des Vergleichsablaufs
-          </p>
+</div>
 
-        </div>
+</div>
 
-      </div>
 
-      <button class="close" onclick="closeCompare()">
-        ✕
-      </button>
 
-    </div>
+<div class="trust-item">
 
+<div class="trust-icon">
+♡
+</div>
 
-    <div class="form">
+<div>
 
-      <div class="form-grid">
+<b>
+Einfach & schnell
+</b>
 
-        <div>
+<small>
+In wenigen Klicks vergleichen
+</small>
 
-          <label>
-            Postleitzahl
-          </label>
+</div>
 
-          <input
-            id="postcode"
-            type="text"
-            inputmode="numeric"
-            maxlength="5"
-            placeholder="z. B. 36037">
+</div>
 
-        </div>
 
 
-        <div>
+<div class="trust-item">
 
-          <label>
-            Personen im Haushalt
-          </label>
+<div class="trust-icon">
+◒
+</div>
 
-          <select id="persons">
+<div>
 
-            <option value="1">
-              1 Person
-            </option>
+<b>
+Mehr im Leben haben
+</b>
 
-            <option value="2" selected>
-              2 Personen
-            </option>
+<small>
+So lässt sich’s leben.
+</small>
 
-            <option value="3">
-              3 Personen
-            </option>
+</div>
 
-            <option value="4">
-              4 Personen
-            </option>
+</div>
 
-            <option value="5">
-              5+ Personen
-            </option>
 
-          </select>
+</div>
 
-        </div>
+</section>
 
 
-        <div>
 
-          <label>
-            Aktuelle Kosten pro Monat
-          </label>
+<div
+class="toast"
+id="toast"
+></div>
 
-          <input
-            id="cost"
-            type="number"
-            min="0"
-            placeholder="z. B. 100 €">
-
-        </div>
-
-
-        <div>
-
-          <label>
-            Was ist dir wichtig?
-          </label>
-
-          <select id="priority">
-
-            <option>
-              Möglichst günstig
-            </option>
-
-            <option>
-              Preis & Leistung
-            </option>
-
-            <option>
-              Flexible Laufzeit
-            </option>
-
-            <option>
-              Nachhaltigkeit
-            </option>
-
-          </select>
-
-        </div>
-
-
-        <div class="full test-notice">
-
-          <strong>Testversion:</strong>
-          Diese Eingaben werden momentan nur lokal im
-          Browser verarbeitet. Es wird noch kein echter
-          Vertrag abgeschlossen und keine Anfrage an einen
-          Anbieter oder Vergleichspartner übertragen.
-
-        </div>
-
-
-        <div class="full">
-
-          <button
-            class="compare-button"
-            onclick="showResult()">
-
-            Angebote vergleichen →
-          </button>
-
-        </div>
-
-      </div>
-
-
-      <div class="result" id="result">
-
-        <div class="result-badge">
-          TESTERGEBNIS
-        </div>
-
-        <h4 id="resultTitle">
-          Vergleich funktioniert ✓
-        </h4>
-
-        <p id="resultText">
-          Deine Angaben wurden erfolgreich verarbeitet.
-        </p>
-
-        <button
-          class="primary"
-          onclick="alertTest()">
-
-          Zum passenden Angebot →
-        </button>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- HOW IT WORKS -->
-
-  <section class="how" id="how">
-
-    <div class="section-head">
-
-      <h2>
-        So einfach geht günstig.
-      </h2>
-
-      <p>
-        Drei Schritte – ohne komplizierten Tarif-Dschungel.
-      </p>
-
-    </div>
-
-
-    <div class="steps">
-
-      <div class="step">
-
-        <div class="number">1</div>
-
-        <h3>Bereich wählen</h3>
-
-        <p>
-          Strom, Gas, Internet oder einen anderen
-          Vergleich auswählen.
-        </p>
-
-      </div>
-
-
-      <div class="step">
-
-        <div class="number">2</div>
-
-        <h3>Daten eingeben</h3>
-
-        <p>
-          Nur die Angaben machen, die für den jeweiligen
-          Vergleich benötigt werden.
-        </p>
-
-      </div>
-
-
-      <div class="step">
-
-        <div class="number">3</div>
-
-        <h3>Angebote ansehen</h3>
-
-        <p>
-          Später werden hier passende Angebote unseres
-          Vergleichspartners eingebunden.
-        </p>
-
-      </div>
-
-    </div>
-
-  </section>
-
-</main>
-
-
-<footer>
-
-  <div class="page footer-inner">
-
-    <div>
-      © 2026 ICH MACH’S GÜNSTIG
-    </div>
-
-    <div>
-      So lässt sich’s leben. · Testversion
-    </div>
-
-  </div>
-
-</footer>
 
 
 <script>
 
-  let currentCategory = "Strom";
+const toast =
+document.getElementById("toast");
 
 
-  function scrollCategories(){
+function say(text){
 
-    document
-      .getElementById("categories")
-      .scrollIntoView({
-        behavior:"smooth"
-      });
+toast.textContent = text;
 
-  }
+toast.classList.add("show");
 
+setTimeout(
+() => toast.classList.remove("show"),
+2200
+);
 
-  function scrollHow(){
-
-    document
-      .getElementById("how")
-      .scrollIntoView({
-        behavior:"smooth"
-      });
-
-  }
+}
 
 
-  function openCompare(name,icon){
+document
+.querySelectorAll(".card")
+.forEach(card => {
 
-    currentCategory = name;
+card.addEventListener(
+"click",
+() => {
 
-    document.getElementById("selectedTitle")
-      .textContent = name + " vergleichen";
+say(
+card.dataset.name +
+" – Testbereich geöffnet"
+);
 
-    document.getElementById("selectedIcon")
-      .textContent = icon;
+}
+);
 
-    document.getElementById("result")
-      .style.display = "none";
-
-    const box =
-      document.getElementById("compareBox");
-
-    box.style.display = "block";
-
-    setTimeout(function(){
-
-      box.scrollIntoView({
-        behavior:"smooth",
-        block:"start"
-      });
-
-    },50);
-
-  }
+});
 
 
-  function closeCompare(){
+document
+.getElementById("search")
+.addEventListener(
+"keydown",
+event => {
 
-    document.getElementById("compareBox")
-      .style.display = "none";
+if(
+event.key === "Enter" &&
+event.target.value.trim()
+){
 
-  }
+say(
+"Suche nach: " +
+event.target.value.trim()
+);
 
+}
 
-  function showResult(){
-
-    const postcode =
-      document.getElementById("postcode")
-      .value.trim();
-
-    const cost =
-      document.getElementById("cost")
-      .value;
-
-    const persons =
-      document.getElementById("persons")
-      .value;
-
-    const priority =
-      document.getElementById("priority")
-      .value;
-
-
-    if(postcode.length !== 5){
-
-      alert(
-        "Bitte gib zum Test eine fünfstellige Postleitzahl ein."
-      );
-
-      return;
-
-    }
-
-
-    const result =
-      document.getElementById("result");
-
-
-    document.getElementById("resultTitle")
-      .textContent =
-      currentCategory +
-      "-Vergleich funktioniert ✓";
-
-
-    let text =
-      "Test für PLZ " +
-      postcode +
-      " und " +
-      persons +
-      " Person(en).";
-
-
-    if(cost){
-
-      text +=
-        " Aktuelle Kosten: " +
-        cost +
-        " € pro Monat.";
-
-    }
-
-
-    text +=
-      " Priorität: " +
-      priority +
-      ". In der späteren Live-Version werden an dieser Stelle echte Vergleichsangebote angezeigt.";
-
-
-    document.getElementById("resultText")
-      .textContent = text;
-
-
-    result.style.display = "block";
-
-
-    result.scrollIntoView({
-      behavior:"smooth",
-      block:"center"
-    });
-
-  }
-
-
-  function alertTest(){
-
-    alert(
-      "TESTMODUS\n\n" +
-      "Der Klick funktioniert.\n\n" +
-      "Hier wird später die echte Partner- bzw. Vergleichsintegration eingebunden. Aktuell erfolgt keine kostenpflichtige Aktion und kein Vertragsabschluss."
-    );
-
-  }
+}
+);
 
 </script>
+
 
 </body>
 </html>
