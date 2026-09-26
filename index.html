@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#081d18">
+
+  <title>ICH MACH’S GÜNSTIG – So lässt sich’s leben.</title>
+
+  <style>
+    :root{
+      --green:#0c7a54;
+      --green-dark:#07563d;
+      --green-soft:#e9f7f1;
+      --lime:#b9df45;
+      --yellow:#ffd75e;
+      --cream:#fffaf0;
+      --white:#ffffff;
+      --text:#17332a;
+      --muted:#687a74;
+      --border:#dfe9e5;
+      --shadow:0 16px 40px rgba(10,62,45,.12);
+    }
+
+    *{
+      box-sizing:border-box;
+      -webkit-tap-highlight-color:transparent;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      margin:0;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 15% 0%, #effff7 0, transparent 28%),
+        linear-gradient(180deg,#fffdf7 0%,#f5fbf8 100%);
+      min-height:100vh;
+    }
+
+    button,
+    input,
+    select{
+      font:inherit;
+    }
+
+    button{
+      cursor:pointer;
+    }
+
+    .page{
+      width:min(1180px,calc(100% - 28px));
+      margin:auto;
+    }
+
+    /* HEADER */
+
+    header{
+      padding:18px 0 8px;
+    }
+
+    .nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .logo{
+      width:54px;
+      height:54px;
+      border-radius:18px;
+      background:linear-gradient(145deg,var(--green),#13a36f);
+      color:white;
+      display:grid;
+      place-items:center;
+      font-size:28px;
+      box-shadow:0 10px 25px rgba(12,122,84,.25);
+    }
+
+    .brand-name{
+      font-size:20px;
+      line-height:1;
+      font-weight:900;
+      letter-spacing:-.6px;
+    }
+
+    .brand-name span{
+      color:var(--green);
+    }
+
+    .brand-sub{
+      font-size:12px;
+      color:var(--muted);
+      margin-top:5px;
+      font-weight:700;
+    }
+
+    .nav-btn{
+      border:1px solid var(--border);
+      background:white;
+      padding:11px 16px;
+      border-radius:999px;
+      font-weight:800;
+      color:var(--green-dark);
+    }
+
+    /* HERO */
+
+    .hero{
+      margin-top:22px;
+      background:
+        linear-gradient(135deg,#0a6246 0%,#0b8158 55%,#14a06c 100%);
+      color:white;
+      border-radius:34px;
+      overflow:hidden;
+      position:relative;
+      box-shadow:var(--shadow);
+    }
+
+    .hero:before{
+      content:"";
+      position:absolute;
+      width:330px;
+      height:330px;
+      border-radius:50%;
+      right:-100px;
+      top:-120px;
+      background:rgba(255,255,255,.08);
+    }
+
+    .hero:after{
+      content:"€";
+      position:absolute;
+      right:55px;
+      bottom:-45px;
+      font-size:260px;
+      font-weight:900;
+      color:rgba(255,255,255,.055);
+      transform:rotate(-8deg);
+    }
+
+    .hero-inner{
+      min-height:420px;
+      display:grid;
+      grid-template-columns:1.25fr .75fr;
+      align-items:center;
+      padding:56px;
+      position:relative;
+      z-index:2;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 13px;
+      border-radius:999px;
+      background:rgba(255,255,255,.13);
+      border:1px solid rgba(255,255,255,.17);
+      font-weight:800;
+      font-size:13px;
+    }
+
+    h1{
+      margin:18px 0 14px;
+      font-size:clamp(43px,6vw,78px);
+      line-height:.94;
+      letter-spacing:-3px;
+      max-width:700px;
+    }
+
+    h1 .yellow{
+      color:var(--yellow);
+    }
+
+    .hero-text{
+      max-width:620px;
+      font-size:18px;
+      line-height:1.6;
+      color:#e8fff6;
+    }
+
+    .hero-buttons{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:28px;
+    }
+
+    .primary{
+      border:0;
+      background:var(--yellow);
+      color:#17332a;
+      font-weight:900;
+      padding:16px 22px;
+      border-radius:16px;
+      box-shadow:0 10px 25px rgba(0,0,0,.12);
+    }
+
+    .secondary{
+      border:1px solid rgba(255,255,255,.3);
+      background:rgba(255,255,255,.1);
+      color:white;
+      font-weight:800;
+      padding:16px 22px;
+      border-radius:16px;
+    }
+
+    /* MASCOT */
+
+    .mascot-wrap{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+
+    .mascot{
+      width:245px;
+      height:245px;
+      border-radius:50%;
+      background:var(--yellow);
+      display:grid;
+      place-items:center;
+      position:relative;
+      box-shadow:
+        0 25px 50px rgba(0,0,0,.2),
+        inset 0 -12px 0 rgba(0,0,0,.06);
+      transform:rotate(3deg);
+    }
+
+    .face{
+      font-size:110px;
+      transform:rotate(-3deg);
+    }
+
+    .coin{
+      position:absolute;
+      right:-8px;
+      top:25px;
+      width:70px;
+      height:70px;
+      background:white;
+      color:var(--green);
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      font-weight:1000;
+      font-size:36px;
+      box-shadow:0 12px 25px rgba(0,0,0,.15);
+    }
+
+    /* TRUST */
+
+    .trust{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+      margin:18px 0 0;
+    }
+
+    .trust-card{
+      background:white;
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:16px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .trust-icon{
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      background:var(--green-soft);
+      font-size:20px;
+    }
+
+    .trust-card strong{
+      display:block;
+      font-size:14px;
+    }
+
+    .trust-card small{
+      color:var(--muted);
+    }
+
+    /* CATEGORY SECTION */
+
+    .section{
+      padding:65px 0 20px;
+    }
+
+    .section-head{
+      text-align:center;
+      max-width:680px;
+      margin:0 auto 32px;
+    }
+
+    .section-head h2{
+      font-size:clamp(31px,5vw,46px);
+      letter-spacing:-1.7px;
+      margin:0 0 10px;
+    }
+
+    .section-head p{
+      color:var(--muted);
+      font-size:17px;
+      line-height:1.6;
+    }
+
+    .categories{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+    }
+
+    .category{
+      appearance:none;
+      border:1px solid var(--border);
+      background:white;
+      min-height:195px;
+      border-radius:25px;
+      padding:23px;
+      text-align:left;
+      color:var(--text);
+      box-shadow:0 8px 22px rgba(17,70,53,.06);
+      transition:.18s ease;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .category:hover{
+      transform:translateY(-5px);
+      border-color:#9ed8c3;
+      box-shadow:0 18px 35px rgba(17,70,53,.12);
+    }
+
+    .category:active{
+      transform:scale(.98);
+    }
+
+    .cat-icon{
+      width:60px;
+      height:60px;
+      border-radius:19px;
+      display:grid;
+      place-items:center;
+      background:var(--green-soft);
+      font-size:30px;
+      margin-bottom:22px;
+    }
+
+    .category strong{
+      display:block;
+      font-size:19px;
+      margin-bottom:7px;
+    }
+
+    .category span{
+      font-size:14px;
+      color:var(--muted);
+      line-height:1.45;
+    }
+
+    .arrow{
+      position:absolute;
+      right:19px;
+      bottom:18px;
+      width:32px;
+      height:32px;
+      border-radius:50%;
+      background:#f3f8f6;
+      display:grid;
+      place-items:center;
+      color:var(--green);
+      font-weight:900;
+    }
+
+    /* COMPARISON */
+
+    .compare-box{
+      margin:55px 0;
+      background:white;
+      border:1px solid var(--border);
+      border-radius:30px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      display:none;
+    }
+
+    .compare-top{
+      background:linear-gradient(135deg,#effbf6,#fffaf0);
+      padding:27px 30px;
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      align-items:center;
+      border-bottom:1px solid var(--border);
+    }
+
+    .compare-title{
+      display:flex;
+      gap:15px;
+      align-items:center;
+    }
+
+    .compare-title-icon{
+      width:58px;
+      height:58px;
+      border-radius:18px;
+      display:grid;
+      place-items:center;
+      background:var(--green);
+      color:white;
+      font-size:27px;
+    }
+
+    .compare-title h3{
+      margin:0 0 4px;
+      font-size:24px;
+    }
+
+    .compare-title p{
+      margin:0;
+      color:var(--muted);
+    }
+
+    .close{
+      width:42px;
+      height:42px;
+      border:0;
+      border-radius:50%;
+      background:white;
+      font-size:20px;
+      color:var(--text);
+      box-shadow:0 5px 15px rgba(0,0,0,.08);
+    }
+
+    .form{
+      padding:30px;
+    }
+
+    .form-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:18px;
+    }
+
+    label{
+      display:block;
+      font-size:13px;
+      font-weight:900;
+      margin-bottom:8px;
+    }
+
+    input,
+    select{
+      width:100%;
+      height:54px;
+      border:1px solid #d7e3de;
+      border-radius:14px;
+      background:#fbfdfc;
+      padding:0 15px;
+      outline:none;
+      color:var(--text);
+    }
+
+    input:focus,
+    select:focus{
+      border-color:var(--green);
+      box-shadow:0 0 0 4px rgba(12,122,84,.09);
+    }
+
+    .full{
+      grid-column:1/-1;
+    }
+
+    .test-notice{
+      background:#fff8dc;
+      border:1px solid #f3df8b;
+      padding:15px;
+      border-radius:14px;
+      color:#67581f;
+      font-size:13px;
+      line-height:1.5;
+    }
+
+    .compare-button{
+      width:100%;
+      border:0;
+      border-radius:16px;
+      background:linear-gradient(135deg,var(--green-dark),var(--green));
+      color:white;
+      font-weight:900;
+      padding:17px;
+      margin-top:8px;
+      font-size:16px;
+    }
+
+    /* RESULT */
+
+    .result{
+      display:none;
+      margin-top:22px;
+      background:#f2fbf7;
+      border:1px solid #cde9dd;
+      border-radius:20px;
+      padding:22px;
+    }
+
+    .result-badge{
+      display:inline-block;
+      background:var(--green);
+      color:white;
+      border-radius:999px;
+      padding:6px 10px;
+      font-size:11px;
+      font-weight:900;
+      margin-bottom:10px;
+    }
+
+    .result h4{
+      margin:0 0 8px;
+      font-size:21px;
+    }
+
+    .result p{
+      color:var(--muted);
+      line-height:1.55;
+      margin-bottom:17px;
+    }
+
+    /* HOW */
+
+    .how{
+      padding:30px 0 70px;
+    }
+
+    .steps{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .step{
+      text-align:center;
+      background:white;
+      border:1px solid var(--border);
+      border-radius:25px;
+      padding:28px 20px;
+    }
+
+    .number{
+      margin:0 auto 17px;
+      width:48px;
+      height:48px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:var(--green);
+      color:white;
+      font-weight:900;
+      font-size:19px;
+    }
+
+    .step h3{
+      margin:0 0 8px;
+    }
+
+    .step p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.5;
+      font-size:14px;
+    }
+
+    footer{
+      border-top:1px solid var(--border);
+      padding:28px 0 45px;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    /* MOBILE */
+
+    @media(max-width:900px){
+
+      .hero-inner{
+        grid-template-columns:1fr;
+        padding:40px 28px;
+      }
+
+      .mascot-wrap{
+        margin-top:40px;
+      }
+
+      .categories{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .hero{
+        border-radius:27px;
+      }
+
+      .trust{
+        grid-template-columns:1fr;
+      }
+
+    }
+
+    @media(max-width:600px){
+
+      .page{
+        width:min(100% - 20px,1180px);
+      }
+
+      header{
+        padding-top:12px;
+      }
+
+      .logo{
+        width:48px;
+        height:48px;
+      }
+
+      .brand-name{
+        font-size:16px;
+      }
+
+      .brand-sub{
+        font-size:10px;
+      }
+
+      .nav-btn{
+        padding:9px 12px;
+        font-size:12px;
+      }
+
+      .hero{
+        margin-top:12px;
+      }
+
+      .hero-inner{
+        padding:33px 22px;
+      }
+
+      h1{
+        font-size:45px;
+        letter-spacing:-2.3px;
+      }
+
+      .hero-text{
+        font-size:16px;
+      }
+
+      .hero-buttons{
+        display:grid;
+      }
+
+      .hero-buttons button{
+        width:100%;
+      }
+
+      .mascot{
+        width:185px;
+        height:185px;
+      }
+
+      .face{
+        font-size:82px;
+      }
+
+      .coin{
+        width:57px;
+        height:57px;
+        font-size:28px;
+      }
+
+      .section{
+        padding-top:50px;
+      }
+
+      .categories{
+        grid-template-columns:1fr 1fr;
+        gap:10px;
+      }
+
+      .category{
+        min-height:168px;
+        padding:17px;
+        border-radius:20px;
+      }
+
+      .cat-icon{
+        width:50px;
+        height:50px;
+        font-size:25px;
+        margin-bottom:17px;
+      }
+
+      .category strong{
+        font-size:16px;
+      }
+
+      .category span{
+        font-size:12px;
+      }
+
+      .form-grid{
+        grid-template-columns:1fr;
+      }
+
+      .full{
+        grid-column:auto;
+      }
+
+      .compare-top{
+        padding:20px;
+      }
+
+      .form{
+        padding:20px;
+      }
+
+      .steps{
+        grid-template-columns:1fr;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="page nav">
+
+    <div class="brand">
+      <div class="logo">💶</div>
+
+      <div>
+        <div class="brand-name">
+          ICH MACH’S <span>GÜNSTIG</span>
+        </div>
+
+        <div class="brand-sub">
+          So lässt sich’s leben.
+        </div>
+      </div>
+    </div>
+
+    <button class="nav-btn" onclick="scrollCategories()">
+      Vergleichen
+    </button>
+
+  </div>
+</header>
+
+
+<main class="page">
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-inner">
+
+      <div>
+
+        <div class="eyebrow">
+          ✓ Einfach vergleichen & sparen
+        </div>
+
+        <h1>
+          Ich mach’s<br>
+          <span class="yellow">günstig.</span>
+        </h1>
+
+        <p class="hero-text">
+          Verträge und Tarife einfach vergleichen.
+          Schnell verstehen, was zu dir passt und
+          Sparmöglichkeiten entdecken.
+        </p>
+
+        <div class="hero-buttons">
+
+          <button class="primary" onclick="scrollCategories()">
+            Jetzt vergleichen →
+          </button>
+
+          <button class="secondary" onclick="scrollHow()">
+            So funktioniert’s
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="mascot-wrap">
+
+        <div class="mascot">
+
+          <div class="face">😎</div>
+
+          <div class="coin">€</div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- TRUST -->
+
+  <section class="trust">
+
+    <div class="trust-card">
+      <div class="trust-icon">✓</div>
+      <div>
+        <strong>Einfach</strong>
+        <small>Schritt für Schritt vergleichen</small>
+      </div>
+    </div>
+
+    <div class="trust-card">
+      <div class="trust-icon">⚡</div>
+      <div>
+        <strong>Schnell</strong>
+        <small>Wenige Angaben genügen</small>
+      </div>
+    </div>
+
+    <div class="trust-card">
+      <div class="trust-icon">🔒</div>
+      <div>
+        <strong>Testmodus</strong>
+        <small>Noch keine Datenübertragung</small>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- CATEGORIES -->
+
+  <section class="section" id="categories">
+
+    <div class="section-head">
+
+      <h2>
+        Was möchtest du günstiger machen?
+      </h2>
+
+      <p>
+        Wähle einen Bereich aus und teste unseren
+        Vergleichsablauf.
+      </p>
+
+    </div>
+
+
+    <div class="categories">
+
+      <button class="category"
+        onclick="openCompare('Strom','⚡')">
+
+        <div class="cat-icon">⚡</div>
+
+        <strong>Strom</strong>
+
+        <span>
+          Stromtarife vergleichen
+        </span>
+
+        <div class="arrow">→</div>
+
+      </button>
+
+
+      <button class="category"
+        onclick="openCompare('Gas','🔥')">
+
+        <div class="cat-icon">🔥</div>
+
+        <strong>Gas</strong>
+
+        <span>
+          Gastarife entdecken
+        </span>
+
+        <div class="arrow">→</div>
+
+      </button>
+
+
+      <button class="category"
+        onclick="openCompare('Internet','🌐')">
+
+        <div class="cat-icon">🌐</div>
+
+        <strong>Internet</strong>
+
+        <span>
+          Internet & DSL vergleichen
+        </span>
+
+        <div class="arrow">→</div>
+
+      </button>
+
+
+      <button class="category"
+        onclick="openCompare('Mobilfunk','📱')">
+
+        <div class="cat-icon">📱</div>
+
+        <strong>Mobilfunk</strong>
+
+        <span>
+          Handytarife vergleichen
+        </span>
+
+        <div class="arrow">→</div>
+
+      </button>
+
+
+      <button class="category"
+        onclick="openCompare('Versicherung','🛡️')">
+
+        <div class="cat-icon">🛡️</div>
+
+        <strong>Versicherung</strong>
+
+        <span>
+          Versicherungen prüfen
+        </span>
+
+        <div class="arrow">→</div>
+
+      </button>
+
+
+      <button class="category"
+        onclick="openCompare('Kredit','💳')">
+
+        <div class="cat-icon">💳</div>
+
+        <strong>Kredit</strong>
+
+        <span>
+          Konditionen vergleichen
+        </span>
+
+        <div class="arrow">→</div>
+
+      </button>
+
+
+      <button class="category"
+        onclick="openCompare('Reisen','✈️')">
+
+        <div class="cat-icon">✈️</div>
+
+        <strong>Reisen</strong>
+
+        <span>
+          Angebote entdecken
+        </span>
+
+        <div class="arrow">→</div>
+
+      </button>
+
+
+      <button class="category"
+        onclick="openCompare('Mehr','➕')">
+
+        <div class="cat-icon">➕</div>
+
+        <strong>Mehr</strong>
+
+        <span>
+          Weitere Vergleiche
+        </span>
+
+        <div class="arrow">→</div>
+
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- COMPARISON -->
+
+  <section class="compare-box" id="compareBox">
+
+    <div class="compare-top">
+
+      <div class="compare-title">
+
+        <div
+          class="compare-title-icon"
+          id="selectedIcon">
+          ⚡
+        </div>
+
+        <div>
+
+          <h3 id="selectedTitle">
+            Strom vergleichen
+          </h3>
+
+          <p>
+            Kostenloser Test des Vergleichsablaufs
+          </p>
+
+        </div>
+
+      </div>
+
+      <button class="close" onclick="closeCompare()">
+        ✕
+      </button>
+
+    </div>
+
+
+    <div class="form">
+
+      <div class="form-grid">
+
+        <div>
+
+          <label>
+            Postleitzahl
+          </label>
+
+          <input
+            id="postcode"
+            type="text"
+            inputmode="numeric"
+            maxlength="5"
+            placeholder="z. B. 36037">
+
+        </div>
+
+
+        <div>
+
+          <label>
+            Personen im Haushalt
+          </label>
+
+          <select id="persons">
+
+            <option value="1">
+              1 Person
+            </option>
+
+            <option value="2" selected>
+              2 Personen
+            </option>
+
+            <option value="3">
+              3 Personen
+            </option>
+
+            <option value="4">
+              4 Personen
+            </option>
+
+            <option value="5">
+              5+ Personen
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div>
+
+          <label>
+            Aktuelle Kosten pro Monat
+          </label>
+
+          <input
+            id="cost"
+            type="number"
+            min="0"
+            placeholder="z. B. 100 €">
+
+        </div>
+
+
+        <div>
+
+          <label>
+            Was ist dir wichtig?
+          </label>
+
+          <select id="priority">
+
+            <option>
+              Möglichst günstig
+            </option>
+
+            <option>
+              Preis & Leistung
+            </option>
+
+            <option>
+              Flexible Laufzeit
+            </option>
+
+            <option>
+              Nachhaltigkeit
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="full test-notice">
+
+          <strong>Testversion:</strong>
+          Diese Eingaben werden momentan nur lokal im
+          Browser verarbeitet. Es wird noch kein echter
+          Vertrag abgeschlossen und keine Anfrage an einen
+          Anbieter oder Vergleichspartner übertragen.
+
+        </div>
+
+
+        <div class="full">
+
+          <button
+            class="compare-button"
+            onclick="showResult()">
+
+            Angebote vergleichen →
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="result" id="result">
+
+        <div class="result-badge">
+          TESTERGEBNIS
+        </div>
+
+        <h4 id="resultTitle">
+          Vergleich funktioniert ✓
+        </h4>
+
+        <p id="resultText">
+          Deine Angaben wurden erfolgreich verarbeitet.
+        </p>
+
+        <button
+          class="primary"
+          onclick="alertTest()">
+
+          Zum passenden Angebot →
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- HOW IT WORKS -->
+
+  <section class="how" id="how">
+
+    <div class="section-head">
+
+      <h2>
+        So einfach geht günstig.
+      </h2>
+
+      <p>
+        Drei Schritte – ohne komplizierten Tarif-Dschungel.
+      </p>
+
+    </div>
+
+
+    <div class="steps">
+
+      <div class="step">
+
+        <div class="number">1</div>
+
+        <h3>Bereich wählen</h3>
+
+        <p>
+          Strom, Gas, Internet oder einen anderen
+          Vergleich auswählen.
+        </p>
+
+      </div>
+
+
+      <div class="step">
+
+        <div class="number">2</div>
+
+        <h3>Daten eingeben</h3>
+
+        <p>
+          Nur die Angaben machen, die für den jeweiligen
+          Vergleich benötigt werden.
+        </p>
+
+      </div>
+
+
+      <div class="step">
+
+        <div class="number">3</div>
+
+        <h3>Angebote ansehen</h3>
+
+        <p>
+          Später werden hier passende Angebote unseres
+          Vergleichspartners eingebunden.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer>
+
+  <div class="page footer-inner">
+
+    <div>
+      © 2026 ICH MACH’S GÜNSTIG
+    </div>
+
+    <div>
+      So lässt sich’s leben. · Testversion
+    </div>
+
+  </div>
+
+</footer>
+
+
+<script>
+
+  let currentCategory = "Strom";
+
+
+  function scrollCategories(){
+
+    document
+      .getElementById("categories")
+      .scrollIntoView({
+        behavior:"smooth"
+      });
+
+  }
+
+
+  function scrollHow(){
+
+    document
+      .getElementById("how")
+      .scrollIntoView({
+        behavior:"smooth"
+      });
+
+  }
+
+
+  function openCompare(name,icon){
+
+    currentCategory = name;
+
+    document.getElementById("selectedTitle")
+      .textContent = name + " vergleichen";
+
+    document.getElementById("selectedIcon")
+      .textContent = icon;
+
+    document.getElementById("result")
+      .style.display = "none";
+
+    const box =
+      document.getElementById("compareBox");
+
+    box.style.display = "block";
+
+    setTimeout(function(){
+
+      box.scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+      });
+
+    },50);
+
+  }
+
+
+  function closeCompare(){
+
+    document.getElementById("compareBox")
+      .style.display = "none";
+
+  }
+
+
+  function showResult(){
+
+    const postcode =
+      document.getElementById("postcode")
+      .value.trim();
+
+    const cost =
+      document.getElementById("cost")
+      .value;
+
+    const persons =
+      document.getElementById("persons")
+      .value;
+
+    const priority =
+      document.getElementById("priority")
+      .value;
+
+
+    if(postcode.length !== 5){
+
+      alert(
+        "Bitte gib zum Test eine fünfstellige Postleitzahl ein."
+      );
+
+      return;
+
+    }
+
+
+    const result =
+      document.getElementById("result");
+
+
+    document.getElementById("resultTitle")
+      .textContent =
+      currentCategory +
+      "-Vergleich funktioniert ✓";
+
+
+    let text =
+      "Test für PLZ " +
+      postcode +
+      " und " +
+      persons +
+      " Person(en).";
+
+
+    if(cost){
+
+      text +=
+        " Aktuelle Kosten: " +
+        cost +
+        " € pro Monat.";
+
+    }
+
+
+    text +=
+      " Priorität: " +
+      priority +
+      ". In der späteren Live-Version werden an dieser Stelle echte Vergleichsangebote angezeigt.";
+
+
+    document.getElementById("resultText")
+      .textContent = text;
+
+
+    result.style.display = "block";
+
+
+    result.scrollIntoView({
+      behavior:"smooth",
+      block:"center"
+    });
+
+  }
+
+
+  function alertTest(){
+
+    alert(
+      "TESTMODUS\n\n" +
+      "Der Klick funktioniert.\n\n" +
+      "Hier wird später die echte Partner- bzw. Vergleichsintegration eingebunden. Aktuell erfolgt keine kostenpflichtige Aktion und kein Vertragsabschluss."
+    );
+
+  }
+
+</script>
+
+</body>
+</html>
